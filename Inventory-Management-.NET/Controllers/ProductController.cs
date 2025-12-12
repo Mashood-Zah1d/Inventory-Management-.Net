@@ -1,4 +1,4 @@
-﻿using Inventory_Management_.NET.Data;
+﻿ using Inventory_Management_.NET.Data;
 using Inventory_Management_.NET.Models;
 using Inventory_Management_.NET.Models.Entities;
 using Microsoft.AspNetCore.Mvc;

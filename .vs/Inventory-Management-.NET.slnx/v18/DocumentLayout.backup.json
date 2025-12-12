@@ -1,0 +1,156 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Inventory-Management-.NET\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\migrations\\20251212130511_addingordersandorderdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\migrations\\20251212130511_addingordersandorderdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Migrations\\20251212130153_addingOrdersAndOrderDetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Inventory-Management-.NET\\Migrations\\20251212130153_addingOrdersAndOrderDetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\models\\entities\\orderdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\models\\entities\\orderdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\models\\entities\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\models\\entities\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Migrations\\20251211141133_addingCustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Inventory-Management-.NET\\Migrations\\20251211141133_addingCustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\models\\entities\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\models\\entities\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\models\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\models\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "20251212130511_addingOrdersAndOrderDetails.cs",
+              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Migrations\\20251212130511_addingOrdersAndOrderDetails.cs",
+              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Migrations\\20251212130511_addingOrdersAndOrderDetails.cs",
+              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Migrations\\20251212130511_addingOrdersAndOrderDetails.cs",
+              "RelativeToolTip": "Inventory-Management-.NET\\Migrations\\20251212130511_addingOrdersAndOrderDetails.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-12T13:05:12.14Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "20251212130153_addingOrdersAndOrderDetails.cs",
+              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Migrations\\20251212130153_addingOrdersAndOrderDetails.cs",
+              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Migrations\\20251212130153_addingOrdersAndOrderDetails.cs",
+              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Migrations\\20251212130153_addingOrdersAndOrderDetails.cs",
+              "RelativeToolTip": "Inventory-Management-.NET\\Migrations\\20251212130153_addingOrdersAndOrderDetails.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-12T13:01:53.893Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "OrderDetails.cs",
+              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Models\\Entities\\OrderDetails.cs",
+              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Models\\Entities\\OrderDetails.cs",
+              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Models\\Entities\\OrderDetails.cs",
+              "RelativeToolTip": "Inventory-Management-.NET\\Models\\Entities\\OrderDetails.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T15:07:42.528Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Order.cs",
+              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Models\\Entities\\Order.cs",
+              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Models\\Entities\\Order.cs",
+              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Models\\Entities\\Order.cs",
+              "RelativeToolTip": "Inventory-Management-.NET\\Models\\Entities\\Order.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T15:04:58.115Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Inventory-Management-.NET\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T08:46:19.292Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "20251211141133_addingCustomer.cs",
+              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Migrations\\20251211141133_addingCustomer.cs",
+              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Migrations\\20251211141133_addingCustomer.cs",
+              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Migrations\\20251211141133_addingCustomer.cs",
+              "RelativeToolTip": "Inventory-Management-.NET\\Migrations\\20251211141133_addingCustomer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T14:11:34.144Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Customer.cs",
+              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Models\\Entities\\Customer.cs",
+              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Models\\Entities\\Customer.cs",
+              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Models\\Entities\\Customer.cs",
+              "RelativeToolTip": "Inventory-Management-.NET\\Models\\Entities\\Customer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T14:07:59.556Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Category.cs",
+              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Models\\Entities\\Category.cs",
+              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Models\\Entities\\Category.cs",
+              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Models\\Entities\\Category.cs",
+              "RelativeToolTip": "Inventory-Management-.NET\\Models\\Entities\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T08:44:39.411Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

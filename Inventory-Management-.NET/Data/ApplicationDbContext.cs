@@ -11,5 +11,14 @@ namespace Inventory_Management_.NET.Data
             
         }
         public DbSet<Product> Products { get; set; }
-    }
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<purchaseHistory> purchaseHistories { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<OrderDetails> orderDetails { get; set; }
+
+        public DbSet<Customer> Customers { get; set; }
+        }
 }
