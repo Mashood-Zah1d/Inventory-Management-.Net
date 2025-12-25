@@ -1,8 +1,260 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model Inventory_Management_.NET.Models.HomeViewModel
+@{
+    ViewData["Title"] = "Dashboard";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+    /* 🌌 Body & Background */
+    body {
+        font-family: 'Inter', sans-serif;
+        background: url('https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg') no-repeat center center fixed;
+        background-size: cover;
+        color: #fff;
+        min-height: 100vh;
+        margin: 0;
+        padding: 1.5rem;
+    }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.65);
+            z-index: -1;
+        }
+
+    /* 🌟 Stat Cards */
+    .stat-row {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .stat-card {
+        flex: 1 1 180px;
+        max-width: 220px;
+        height: 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #fff;
+        position: relative;
+        background: rgba(255,255,255,0.08);
+        backdrop-filter: blur(14px);
+        border-radius: 15px;
+        border: 1px solid rgba(255,255,255,0.2);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+        transition: all 0.4s ease;
+        text-decoration: none;
+    }
+
+        .stat-card i {
+            font-size: 2.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-card h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+        }
+
+        .stat-card p {
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 0.2rem;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+        }
+
+    .bg-gradient-blue {
+        background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+    }
+
+    .bg-gradient-green {
+        background: linear-gradient(135deg, #11998e, #38ef7d);
+    }
+
+    .bg-gradient-orange {
+        background: linear-gradient(135deg, #ff8008, #ffc837);
+    }
+
+    .bg-gradient-red {
+        background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    }
+
+    /* 📋 Table Card */
+    .card {
+        border-radius: 15px;
+        background: rgba(255,255,255,0.08);
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(255,255,255,0.2);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.65);
+        margin-top: 2rem;
+        overflow: hidden;
+    }
+
+    .card-header {
+        background: transparent;
+        color: #fff;
+        font-weight: 600;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1rem;
+        padding: 0.8rem 1.2rem;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        text-transform: uppercase;
+    }
+
+    .btn-success {
+        background: linear-gradient(135deg, #28a745, #71e07d);
+        border: none;
+        border-radius: 10px;
+        font-weight: 600;
+        padding: 0.4rem 1rem;
+        transition: all 0.3s ease;
+    }
+
+        .btn-success:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+        }
+
+    table {
+        width: 100%;
+        border-collapse: separate !important;
+        border-spacing: 0 5px;
+        color: #fff;
+    }
+
+    thead th {
+        background-color: rgba(255,255,255,0.1);
+        text-align: center;
+        font-weight: 600;
+    }
+
+    tbody tr {
+        background: rgba(255,255,255,0.05);
+        transition: all 0.3s ease;
+    }
+
+        tbody tr:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+    tbody td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .btn-action {
+        padding: 0.35rem 0.8rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+
+        .btn-action:hover {
+            transform: scale(1.05);
+        }
+</style>
+
+<div class="container-fluid">
+    <!-- Top Stat Cards -->
+    <div class="stat-row">
+        <a class="stat-card bg-gradient-blue" asp-controller="Product" asp-action="Add">
+            <i class="bi bi-box-seam"></i>
+            <h2>@Model.productCount</h2>
+            <p>Products</p>
+        </a>
+        <a class="stat-card bg-gradient-green" asp-controller="Product" asp-action="Add">
+            <i class="bi bi-people-fill"></i>
+            <h2>@Model.customerCount</h2>
+            <p>Customers</p>
+        </a>
+        <a class="stat-card bg-gradient-orange" asp-controller="Product" asp-action="Add">
+            <i class="bi bi-cart-check-fill"></i>
+            <h2>@Model.purchaseCount</h2>
+            <p>Purchases</p>
+        </a>
+        <a class="stat-card bg-gradient-red" asp-controller="Product" asp-action="Add">
+            <i class="bi bi-basket-fill"></i>
+            <h2>@Model.orderCount</h2>
+            <p>Orders</p>
+        </a>
+    </div>
+
+    <!-- Latest Products Table -->
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">Latest Products</h5>
+            <a class="btn btn-success btn-sm" asp-controller="Product" asp-action="Add">+ Add Product</a>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0 align-middle">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Qty</th>
+                            <th>Category</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.products?.Any() == true)
+                        {
+                            int i = 1;
+                            foreach (var p in Model.products.Take(10))
+                            {
+                                <tr>
+                                    <td>@i</td>
+                                    <td>@p.ProductName</td>
+                                    <td>@p.ProductDescription</td>
+                                    <td>$@p.ProductPrice</td>
+                                    <td>@p.ProductQuantity</td>
+                                    <td>@p.ProductCategory</td>
+                                    <td>
+                                        <a class="btn btn-primary btn-action me-2" asp-controller="Product" asp-action="editProduct" asp-route-id="@p.ProductId">Edit</a>
+                                        <a class="btn btn-danger btn-action" asp-controller="Product" asp-action="deleteProduct" asp-route-id="@p.ProductId">Delete</a>
+                                    </td>
+                                </tr>
+                                i++;
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="7" class="text-center text-muted">No products found</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+}

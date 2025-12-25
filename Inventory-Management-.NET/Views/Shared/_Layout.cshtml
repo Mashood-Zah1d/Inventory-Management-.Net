@@ -3,48 +3,255 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Inventory_Management_.NET</title>
-    <script type="importmap"></script>
+    <title>@ViewData["Title"] - Inventory Hub</title>
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Inventory_Management_.NET.styles.css" asp-append-version="true" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        /* 🌌 Background & Fonts */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: url('https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+            body::before {
+                content: "";
+                position: fixed;
+                inset: 0;
+                background: rgba(0,0,0,0.65);
+                z-index: -1;
+            }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+            header .app-name a {
+                font-weight: 700;
+                font-size: 1.6rem;
+                letter-spacing: 1px;
+                text-decoration: none;
+                color: #fff;
+                transition: all 0.3s ease;
+            }
+
+                header .app-name a:hover {
+                    color: #1e90ff;
+                }
+
+                header .app-name a span {
+                    color: #1e90ff; /* Hub in blue */
+                }
+
+            header .user-login a {
+                color: #fff;
+                text-decoration: none;
+                padding: 0.4rem 1rem;
+                border: 1px solid rgba(255,255,255,0.6);
+                border-radius: 10px;
+                transition: all 0.3s ease;
+            }
+
+                header .user-login a:hover {
+                    background: rgba(255,255,255,0.9);
+                    color: #1f1f2e;
+                }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 220px;
+            height: calc(100vh - 60px);
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(14px);
+            border-right: 1px solid rgba(255,255,255,0.1);
+            padding: 2rem 1rem;
+            overflow-y: auto;
+        }
+
+            .sidebar h5 {
+                margin-bottom: 1.5rem;
+                font-weight: 600;
+                letter-spacing: 0.5px;
+            }
+
+            .sidebar a {
+                display: block;
+                color: #fff;
+                padding: 0.7rem 1rem;
+                border-radius: 12px;
+                margin-bottom: 0.5rem;
+                transition: all 0.3s ease;
+            }
+
+                .sidebar a:hover {
+                    background: rgba(255,255,255,0.1);
+                    transform: translateX(5px);
+                }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 220px;
+            padding: 2rem;
+            padding-top: 80px;
+            min-height: calc(100vh - 60px);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(12px);
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            padding: 0.8rem 0;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Cards */
+        .card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(14px);
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            margin-bottom: 1.5rem;
+        }
+
+        .card-header {
+            background: transparent;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            font-weight: 600;
+        }
+
+        /* Buttons */
+        .btn-modern {
+            border-radius: 12px;
+            padding: 0.5rem 1.2rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #28a745, #71e07d);
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+            .btn-modern:hover {
+                transform: scale(1.05);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            }
+
+        /* Tables */
+        table {
+            border-collapse: separate !important;
+            border-spacing: 0 6px;
+            color: #fff;
+        }
+
+        thead th {
+            background: rgba(255,255,255,0.1);
+            font-weight: 600;
+            text-align: center;
+        }
+
+        tbody tr {
+            background: rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+        }
+
+            tbody tr:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            }
+
+        tbody td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        /* Scrollbar for sidebar */
+        .sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+        }
+
+    </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Inventory_Management_.NET</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <div class="app-name">
+            <a asp-controller="Home" asp-action="Index">
+                Inventory <span>Hub</span>
+            </a>
+        </div>
+        <div class="user-login">
+            <a asp-controller="Account" asp-action="Login">Login</a>
+        </div>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h5>Control Panel</h5>
+        <ul class="nav flex-column">
+            <li class="nav-item mb-2">
+                <a class="nav-link" asp-controller="Product" asp-action="Add">Manage Product</a>
+            </li>
+            <li class="nav-item mb-2">
+                <a class="nav-link" asp-controller="Product" asp-action="getProduct">View Product</a>
+            </li>
+            <li class="nav-item mb-2">
+                <a class="nav-link" asp-controller="Order" asp-action="GenerateOrder">Generate Order</a>
+            </li>
+            <li class="nav-item mb-2">
+                <a class="nav-link" asp-controller="Customer" asp-action="ViewCustomer">View Customer</a>
+            </li>
+            <li class="nav-item mb-2">
+                <a class="nav-link" asp-controller="Order" asp-action="ViewOrders">View Orders</a>
+            </li>
+            <li class="nav-item mb-2">
+                <a class="nav-link" asp-controller="PurchaseHistory" asp-action="Add">Add Purchase History</a>
+            </li>
+        </ul>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - Inventory_Management_.NET - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+    <!-- Main Content -->
+    <div class="main-content">
+        @RenderBody()
+    </div>
+
+    <footer>
+        &copy; 2025 - Inventory Hub
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

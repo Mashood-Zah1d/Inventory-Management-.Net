@@ -1,5 +1,126 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<Inventory_Management_.NET.Dtos.GetProductDto>
+
 @{
+    ViewData["Title"] = "All Products";
 }
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        background: linear-gradient(145deg, #1f1f2e, #2c2c3e);
+        font-family: 'Inter', sans-serif;
+        color: #e0e0e0;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 8px; /* space between rows */
+        color: #e0e0e0;
+    }
+
+    thead th {
+        background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+        color: #fff;
+        font-weight: 700;
+        text-align: center;
+        padding: 0.75rem;
+        border: none;
+    }
+
+    tbody tr {
+        background-color: #2a2a3d;
+        transition: all 0.3s ease;
+        border-radius: 0;
+    }
+
+        tbody tr:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+        }
+
+    tbody td {
+        text-align: center;
+        vertical-align: middle;
+        padding: 0.75rem;
+        font-weight: 500;
+    }
+
+    a.btn-edit, button.btn-delete {
+        display: inline-block;
+        padding: 0.4rem 0.8rem;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 3px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        margin: 0 2px;
+        border: none;
+        cursor: pointer;
+    }
+
+    a.btn-edit {
+        background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+    }
+
+    button.btn-delete {
+        background: linear-gradient(135deg, #ff4b5c, #ff6b81);
+    }
+
+        a.btn-edit:hover, button.btn-delete:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+    form.inline-form {
+        display: inline;
+    }
+</style>
+
+<div class="container-fluid p-0">
+    <div class="table-responsive">
+        <table class="table mb-0">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Category</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int i = 1;
+                }
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>@product.ProductName</td>
+                        <td>@product.ProductDescription</td>
+                        <td>$@product.ProductPrice</td>
+                        <td>@product.ProductQuantity</td>
+                        <td>@product.ProductCategory</td>
+                        <td>
+                            <a asp-controller="Product" asp-action="editProduct" asp-route-id="@product.ProductId" class="btn-edit">Edit</a>
+
+                            <form asp-controller="Product" asp-action="deleteProduct" asp-route-id="@product.ProductId" method="post" class="inline-form" onsubmit="return confirm('Are you sure you want to delete this product?');">
+                                <button type="submit" class="btn-delete">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    i++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,6 +1,6 @@
-﻿namespace Inventory_Management_.NET.Models
+﻿namespace Inventory_Management_.NET.Dtos
 {
-    public class AddProductViewModel
+    public class FindProductDto
     {
         public Guid ProductId { get; set; }
         public string ProductName { get; set; }

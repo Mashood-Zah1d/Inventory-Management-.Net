@@ -20,5 +20,7 @@ namespace Inventory_Management_.NET.Data
         public DbSet<OrderDetails> orderDetails { get; set; }
 
         public DbSet<Customer> Customers { get; set; }
+
+        public DbSet<User> Users { get; set; }
         }
 }

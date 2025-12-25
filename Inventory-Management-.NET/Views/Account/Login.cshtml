@@ -1,0 +1,210 @@
+﻿@model Inventory_Management_.NET.Models.LoginViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)), url("https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg") center / cover no-repeat;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== TOP BAR ===== */
+        .top-bar {
+            height: 72px;
+            padding: 1.5rem 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #fff;
+            text-decoration: none;
+        }
+
+            .brand span {
+                color: #00d2ff;
+            }
+
+        .signup-link {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            padding: .45rem 1.2rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,.4);
+            transition: .3s;
+        }
+
+            .signup-link:hover {
+                background: rgba(255,255,255,.15);
+            }
+
+        /* ===== CENTER AREA ===== */
+        .page {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 2rem;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 440px;
+            background: rgba(255,255,255,.12);
+            backdrop-filter: blur(18px);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 30px 60px rgba(0,0,0,.7);
+        }
+
+            .card h1 {
+                margin: 1.5rem 0 2rem;
+                text-align: center;
+                font-size: 1.85rem;
+                font-weight: 800;
+            }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: .4rem;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            padding: .7rem .85rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,.35);
+            background: rgba(255,255,255,.18);
+            color: #fff;
+            font-size: .95rem;
+        }
+
+            input::placeholder {
+                color: rgba(255,255,255,.7);
+            }
+
+            input:focus {
+                outline: none;
+                border-color: #00d2ff;
+                box-shadow: 0 0 14px rgba(0,210,255,.6);
+                background: rgba(255,255,255,.25);
+            }
+
+        .text-danger {
+            font-size: .8rem;
+            margin-top: .25rem;
+            color: #ff9b9b;
+        }
+
+        button {
+            width: 100%;
+            margin-top: .8rem;
+            padding: .75rem;
+            border-radius: 12px;
+            border: none;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            background: linear-gradient(135deg, #28a745, #71e07d);
+            transition: .3s;
+        }
+
+            button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 16px 30px rgba(0,0,0,.6);
+            }
+
+        .alert {
+            margin-bottom: 1rem;
+            padding: .7rem;
+            border-radius: 10px;
+            background: rgba(0,0,0,.6);
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- TOP -->
+    <div class="top-bar">
+        <a asp-controller="Home" asp-action="Index" class="brand">
+            Inventory<span>Hub</span>
+        </a>
+
+        <a asp-controller="Account" asp-action="Signup" class="signup-link">
+            Sign Up
+        </a>
+    </div>
+
+    <!-- CENTER -->
+    <div class="page">
+        <div class="card">
+            <h1>Login</h1>
+
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="alert">
+                    @foreach (var e in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        <div>@e.ErrorMessage</div>
+                    }
+                </div>
+            }
+
+            <form asp-action="Login" asp-controller="Account" method="post">
+
+                <div class="form-group">
+                    <label asp-for="UserName"></label>
+                    <input asp-for="UserName" placeholder="Username" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password" type="password" placeholder="Password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <button>Login</button>
+            </form>
+
+        </div>
+    </div>
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
+</body>
+</html>

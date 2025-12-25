@@ -1,6 +1,9 @@
-﻿ using Inventory_Management_.NET.Data;
+﻿using Inventory_Management_.NET.Data;
+using Inventory_Management_.NET.Dtos;
 using Inventory_Management_.NET.Models;
 using Inventory_Management_.NET.Models.Entities;
+using Inventory_Management_.NET.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,22 +11,31 @@ namespace Inventory_Management_.NET.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly ApplicationDbContext dbContext;
+        private readonly ProductServices productService;
 
-        public ProductController(ApplicationDbContext DbContext)
+        public ProductController(ProductServices productService)
         {
-            dbContext = DbContext;
+            this.productService = productService;
         }
         public IActionResult Index()
         {
             return View();
         }
 
-        [HttpPost]
-
-        public async Task<IActionResult> Add([FromBody] AddProductViewModel viewmodel)
+        [HttpGet]
+        [Authorize]
+        public IActionResult Add()
         {
-            var product = new Product
+            return View();
+        }
+
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Add( AddProductViewModel viewmodel)
+        {
+
+            var Dto = new AddProductDto
             {
                 ProductName = viewmodel.ProductName,
                 ProductDescription = viewmodel.ProductDescription,
@@ -32,74 +44,69 @@ namespace Inventory_Management_.NET.Controllers
                 ProductCategory = viewmodel.ProductCategory,
             };
 
-            await dbContext.AddAsync(product);
-            await dbContext.SaveChangesAsync();
-            return View();
+            await productService.AddProductAsync(Dto);
+            return RedirectToAction("getProduct","Product");
         }
 
         [HttpGet]
+        
         public async Task<IActionResult> getProduct()
         {
-            var Product = await dbContext.Products.ToListAsync();
-            return Ok(Product);
-            //return View(Product);
+            var Product = await productService.GetAllProductAsync();
+            return View(Product);
         }
 
         [HttpGet]
-
+        [Authorize]
         public async Task<IActionResult> editProduct(Guid id)
         {
-            var Product = await dbContext.Products.FindAsync(id);
+            var Product = await productService.FindProduct(id);
             if(Product is null)
             {
                 return NotFound("Product Not Founded");
             }
-            return Ok(Product);
-            //return View(Product);
+
+            var product = new AddProductViewModel
+            {
+                ProductId = Product.ProductId,
+                ProductName= Product.ProductName,
+                ProductCategory = Product.ProductCategory,
+                ProductDescription= Product.ProductDescription,
+                ProductPrice=Product.ProductPrice,
+                ProductQuantity=Product.ProductQuantity
+            };
+
+
+            return View(product);
         }
 
         [HttpPost]
-
-        public async Task<IActionResult> editProduct([FromBody] Product viewModel)
+        [Authorize]
+        public async Task<IActionResult> editProduct(Product viewModel)
         {
-            var Product = await dbContext.Products.FindAsync(viewModel.ProductId);
-            if (Product is null)
+
+            var dto = new EditProductDto
             {
-                return NotFound("Product Not Founded");
-            }
+                ProductName = viewModel.ProductName,
+                ProductCategory = viewModel.ProductCategory,
+                ProductDescription = viewModel.ProductDescription,
+                ProductPrice = viewModel.ProductPrice,
+                ProductQuantity = viewModel.ProductQuantity
+            };
 
-            Product.ProductName = viewModel.ProductName;
-            Product.ProductDescription = viewModel.ProductDescription;
-            Product.ProductPrice = viewModel.ProductPrice;
-            Product.ProductQuantity = viewModel.ProductQuantity;
-            Product.ProductCategory = viewModel.ProductCategory;
-
-            await dbContext.SaveChangesAsync();
-
-            return Ok(Product);
-            //return View(Product);
+            await productService.EditProductAsync(viewModel.ProductId,dto);
+            return RedirectToAction("getProduct", "Product");
         }
 
-        [HttpDelete]
-
-        public async Task<IActionResult> deleteProduct ([FromBody] Product viewModel)
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> deleteProduct (Guid id)
         {
-                var product = await dbContext.Products.
-                AsNoTracking().
-                FirstOrDefaultAsync(x => x.ProductId == viewModel.ProductId);
+            await productService.DeleteProductAsync(id);
+            return RedirectToAction("getProduct", "Product");
 
-                if(product is null)
-                {
-                    return StatusCode(400, "Product Not Founded");
-                }
-
-                 dbContext.Products.Remove(viewModel);
-                await dbContext.SaveChangesAsync();
-                return StatusCode(200, "Product Deleted SuccessFully");
-
-            }
-            
-         
+        }
+           
 
     }
 }

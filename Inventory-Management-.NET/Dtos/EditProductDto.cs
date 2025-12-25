@@ -1,8 +1,7 @@
-﻿namespace Inventory_Management_.NET.Models
+﻿namespace Inventory_Management_.NET.Dtos
 {
-    public class AddProductViewModel
+    public class EditProductDto
     {
-        public Guid ProductId { get; set; }
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
 
