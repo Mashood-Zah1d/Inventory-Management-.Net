@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using Inventory_Management_.NET.Dtos;
+using System.Net;
 using System.Net.Mail;
 
 namespace Inventory_Management_.NET.Services
@@ -12,24 +13,24 @@ namespace Inventory_Management_.NET.Services
             _config = config;
         }
 
-        public async Task SendEmailAsync(string toEmail, string subject, string body)
+        public async Task SendEmailAsync(EmailDto dto)
         {
             var emailSettings = _config.GetSection("EmailSettings");
 
-            var fromAddress = new MailAddress(emailSettings["SenderEmail"], emailSettings["SenderName"]);
-            var toAddress = new MailAddress(toEmail);
+            var fromAddress = new MailAddress(emailSettings["SenderEmail"]!, emailSettings["SenderName"]);
+            var toAddress = new MailAddress(dto.To);
 
             using (var smtp = new SmtpClient())
             {
-                smtp.Host = emailSettings["SmtpServer"];
-                smtp.Port = int.Parse(emailSettings["Port"]);
+                smtp.Host = emailSettings["SmtpServer"]!;
+                smtp.Port = int.Parse(emailSettings["Port"]!);
                 smtp.EnableSsl = true;
-                smtp.Credentials = new NetworkCredential(emailSettings["Username"], emailSettings["Password"]);
+                smtp.Credentials = new NetworkCredential(emailSettings["Username"]!, emailSettings["Password"]!);
 
                 using (var message = new MailMessage(fromAddress, toAddress)
                 {
-                    Subject = subject,
-                    Body = body,
+                    Subject = dto.Subject,
+                    Body = dto.Body,
                     IsBodyHtml = true
                 })
                 {

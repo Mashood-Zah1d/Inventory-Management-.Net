@@ -10,5 +10,8 @@
         public decimal ProductQuantity { get; set; }
 
         public int ProductCategory { get; set; }
+
+        public string Image { get; set; }
+
     }
 }

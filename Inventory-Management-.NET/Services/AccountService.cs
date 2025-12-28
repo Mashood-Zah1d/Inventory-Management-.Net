@@ -15,11 +15,13 @@ namespace Inventory_Management_.NET.Services
     {
         private readonly ApplicationDbContext dbContext;
         private readonly IConfiguration config;
+        private readonly EmailService emailService;
 
-        public AccountService(ApplicationDbContext dbContext , IConfiguration config)
+        public AccountService(ApplicationDbContext dbContext, IConfiguration config, EmailService emailService)
         {
             this.dbContext = dbContext;
             this.config = config;
+            this.emailService = emailService;
         }
 
         public async Task<ResponseMessage<User>> AddUserAsync(SignupDto dto)
@@ -42,14 +44,14 @@ namespace Inventory_Management_.NET.Services
             };
 
             var Results = await dbContext.AddAsync(user);
-             await dbContext.SaveChangesAsync();
+            await dbContext.SaveChangesAsync();
 
             if (Results == null)
             {
                 return new ResponseMessage<User>
                 {
                     Success = false,
-                    Message= "Error Inserting The User. Try Again!"
+                    Message = "Error Inserting The User. Try Again!"
                 };
             }
 
@@ -95,7 +97,7 @@ namespace Inventory_Management_.NET.Services
             };
         }
 
-        private string GenerateJwtToken(User user , string secretKey)
+        private string GenerateJwtToken(User user, string secretKey)
         {
             var key = Encoding.UTF8.GetBytes(secretKey);
 
@@ -117,5 +119,124 @@ namespace Inventory_Management_.NET.Services
             var token = tokenHandler.CreateToken(tokenDescription);
             return tokenHandler.WriteToken(token);
         }
+
+        public async Task<ResponseMessage<bool>> SendPasswordResetEmailAsync(ForgotPasswordDto dto)
+        {
+
+
+
+            var emailDto = new EmailDto
+            {
+                To = dto.Email,
+                Subject = "Password Reset Request",
+                Body = $@"
+                <h3>Password Reset Request</h3>
+                <p>Hello,</p>
+                <p>Use the code below to reset your password:</p>
+                <h2 style='color:blue;'>{dto.Code}</h2>
+                <p>If you didn't request a password reset, please ignore this email.</p>
+                <br/>
+                <p>Thanks,<br/>Inventory Hub</p>"
+            };
+
+            await emailService.SendEmailAsync(emailDto);
+
+            return new ResponseMessage<Boolean>
+            {
+                Success = true,
+                Message = "Password reset email sent successfully!",
+                Data = true
+            };
+        }
+
+        public async Task<ResponseMessage<User>> GetUserByEmailAsync(string email)
+        {
+            var user = await dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
+
+            if (user == null)
+            {
+                return new ResponseMessage<User>
+                {
+                    Success=false,
+                    Message="User Not Found ! Email Is Wrong"
+                };
+            }
+
+            return new ResponseMessage<User>
+            {
+                Success = true,
+                Message = "User Found Successfully",
+                Data = user
+            };
+        }
+
+        public async Task SaveResetCodeAsync(string email, string code)
+        {
+            var existing = await dbContext.ForgotPassword
+                                   .FirstOrDefaultAsync(x => x.Email == email);
+
+            if (existing != null)
+            {
+                existing.Code = code;
+                existing.ExpiresAt = DateTime.UtcNow.AddMinutes(5);
+            }
+            else
+            {
+                dbContext.ForgotPassword.Add(new ForgotPassword
+                {
+                    Email = email,
+                    Code = code,
+                    ExpiresAt = DateTime.UtcNow.AddMinutes(5)
+                });
+            }
+
+            await dbContext.SaveChangesAsync();
+        }
+
+        public async Task<bool> VerifyResetCodeAsync(string email, string userCode)
+        {
+            var record = await dbContext.ForgotPassword
+                                 .FirstOrDefaultAsync(x => x.Email == email);
+
+            if (record == null)
+                return false;
+
+            if (record.ExpiresAt < DateTime.UtcNow)
+                return false;
+
+            if (record.Code != userCode)
+                return false;
+
+            dbContext.ForgotPassword.Remove(record);
+            await dbContext.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<ResponseMessage<User>> UpdatePasswordAsync(string email, string newPassword)
+        {
+            var user = await dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
+            if (user == null)
+            {
+                return new ResponseMessage<User>
+                {
+                    Success = false,
+                    Message = "User not found."
+                };
+            }
+
+            
+            user.Password = BCrypt.Net.BCrypt.HashPassword(newPassword);
+
+            await dbContext.SaveChangesAsync();
+
+            return new ResponseMessage<User>
+            {
+                Success = true,
+                Message = "Password updated successfully."
+            };
+        }
+
+
     }
 }

@@ -1,8 +1,11 @@
+using CloudinaryDotNet;
 using Inventory_Management_.NET.Auth;
 using Inventory_Management_.NET.Data;
 using Inventory_Management_.NET.Services;
+using Inventory_Management_.NET.Utils;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.IdentityModel.Tokens.Experimental;
 using System.Text;
@@ -17,6 +20,28 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 builder.Services.AddScoped<DashBoardService>();
 builder.Services.AddScoped<ProductServices>();
 builder.Services.AddScoped<AccountService>();
+builder.Services.AddScoped<CloudinaryService>();
+builder.Services.AddSingleton<EmailService>();
+builder.Services.AddScoped<OrderServices>();
+
+
+
+builder.Services.Configure<CloudinarySetting>(
+    builder.Configuration.GetSection("CloudinarySettings")
+);
+
+builder.Services.AddSingleton<Cloudinary>(sp =>
+{
+    var config = sp.GetRequiredService<IOptions<CloudinarySetting>>().Value;
+
+    var account = new Account(
+        config.CloudName,
+        config.ApiKey,
+        config.ApiSecret
+        );
+
+    return new Cloudinary(account);
+});
 
 builder.Services.AddJwtAuth(builder.Configuration);
 var app = builder.Build();

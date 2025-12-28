@@ -1,0 +1,244 @@
+﻿@model Inventory_Management_.NET.Models.GetCustomerDetailViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Generate Bill</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: url('https://images.pexels.com/photos/259132/pexels-photo-259132.jpeg') center / cover no-repeat fixed;
+            color: #fff;
+            min-height: 100vh;
+        }
+
+            body::before {
+                content: "";
+                position: fixed;
+                inset: 0;
+                background: rgba(0,0,0,0.7);
+                z-index: -1;
+            }
+
+        h2 {
+            text-align: center;
+            margin: 2rem 0 1rem 0;
+            font-weight: 700;
+        }
+
+        /* Table */
+        .bill-table-container {
+            width: 90%;
+            margin: 0 auto 2rem auto;
+            backdrop-filter: blur(15px);
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 12px;
+        }
+
+        thead th {
+            background: rgba(255,255,255,0.1);
+            font-weight: 700;
+            padding: 0.8rem 1rem;
+        }
+
+        tbody tr {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+            tbody tr:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            }
+
+        tbody td {
+            padding: 0.8rem 1rem;
+            vertical-align: middle;
+        }
+
+        tbody img {
+            width: 50px;
+            height: 35px;
+            border-radius: 6px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        /* Form */
+        .customer-form {
+            width: 90%;
+            margin: 0 auto 3rem auto;
+            backdrop-filter: blur(15px);
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+        }
+
+            .customer-form h3 {
+                text-align: center;
+                font-weight: 700;
+                margin-bottom: 2rem;
+            }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+            .form-row div {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .form-row label {
+                margin-bottom: 0.5rem;
+                font-weight: 600;
+                color: #ccc;
+            }
+
+            .form-row input {
+                padding: 0.8rem 1rem;
+                font-size: 1.1rem;
+                border-radius: 12px;
+                border: none;
+                outline: none;
+                background: rgba(255,255,255,0.15);
+                color: #fff;
+                font-weight: 600;
+                box-shadow: inset 0 0 8px rgba(0,0,0,0.3);
+            }
+
+                .form-row input::placeholder {
+                    color: #ddd;
+                }
+
+        .customer-form button {
+            width: 100%;
+            padding: 0.9rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 14px;
+            border: none;
+            cursor: pointer;
+            background: linear-gradient(135deg, #28a745, #71e07d);
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+            .customer-form button:hover {
+                transform: scale(1.02);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            }
+
+        @@media (max-width: 900px) {
+            .form-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Generate Bill</h2>
+
+    <!-- Table -->
+    <div class="bill-table-container">
+        <table id="billTable">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- JS will populate -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="customer-form">
+        <h3>Customer Details</h3>
+        <form asp-action="CheckOut" method="post">
+            <div class="form-row">
+                <div>
+                    <label for="CustomerName">Name</label>
+                    <input type="text" id="CustomerName" name="CustomerName" placeholder="Enter name" required />
+                </div>
+                <div>
+                    <label for="Email">Email</label>
+                    <input type="email" id="Email" name="Email" placeholder="Enter email" required />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div>
+                    <label for="Phone">Phone</label>
+                    <input type="tel" id="Phone" name="Phone" placeholder="Enter phone" required />
+                </div>
+
+                <input type="hidden" id="BasketJson" name="BasketJson" />
+            </div>
+
+            <button type="submit" onclick="attachBasket()">Generate Bill</button>
+        </form>
+    </div>
+
+    <script>
+        const basket = JSON.parse(localStorage.getItem('basket')) || {};
+        const tbody = document.querySelector('#billTable tbody');
+        let grandTotal = 0;
+
+        Object.values(basket).forEach(item => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td><img src="${item.image}" alt="${item.name}">${item.name}</td>
+                <td>Rs. ${item.price}</td>
+                <td>${item.qty}</td>
+                <td>Rs. ${item.qty * item.price}</td>
+            `;
+            tbody.appendChild(row);
+            grandTotal += item.qty * item.price;
+        });
+
+        const totalRow = document.createElement('tr');
+        totalRow.innerHTML = `
+            <td colspan="3" style="font-weight:700;">Grand Total</td>
+            <td style="font-weight:700;">Rs. ${grandTotal}</td>
+        `;
+        tbody.appendChild(totalRow);
+
+
+        function attachBasket() {
+        const basket = JSON.parse(localStorage.getItem("basket")) || {};
+        document.getElementById("BasketJson").value = JSON.stringify(basket);
+        }
+    </script>
+
+</body>
+</html>

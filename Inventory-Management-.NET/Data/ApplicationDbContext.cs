@@ -22,5 +22,8 @@ namespace Inventory_Management_.NET.Data
         public DbSet<Customer> Customers { get; set; }
 
         public DbSet<User> Users { get; set; }
-        }
+
+        public DbSet<ForgotPassword> ForgotPassword { get; set; }
+
+    }
 }

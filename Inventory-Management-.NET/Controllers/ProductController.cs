@@ -12,10 +12,12 @@ namespace Inventory_Management_.NET.Controllers
     public class ProductController : Controller
     {
         private readonly ProductServices productService;
+        private readonly CloudinaryService cloudinaryService;
 
-        public ProductController(ProductServices productService)
+        public ProductController(ProductServices productService,CloudinaryService cloudinaryService)
         {
             this.productService = productService;
+            this.cloudinaryService = cloudinaryService;
         }
         public IActionResult Index()
         {
@@ -34,14 +36,18 @@ namespace Inventory_Management_.NET.Controllers
         [Authorize]
         public async Task<IActionResult> Add( AddProductViewModel viewmodel)
         {
+            var ImageUrl = await cloudinaryService.UploadImageAsync(viewmodel.Image);
+
 
             var Dto = new AddProductDto
             {
+                Image=ImageUrl.Data,
                 ProductName = viewmodel.ProductName,
                 ProductDescription = viewmodel.ProductDescription,
                 ProductPrice = viewmodel.ProductPrice,
                 ProductQuantity = viewmodel.ProductQuantity,
                 ProductCategory = viewmodel.ProductCategory,
+               
             };
 
             await productService.AddProductAsync(Dto);

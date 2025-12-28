@@ -29,6 +29,10 @@
             color: #fff;
             display: flex;
             flex-direction: column;
+            flex-direction: column;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
         }
 
         /* ===== TOP BAR ===== */
@@ -153,6 +157,24 @@
             background: rgba(0,0,0,.6);
             text-align: center;
         }
+
+        .forgot-link {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+            .forgot-link a {
+                color: #00d2ff;
+                font-weight: 600;
+                text-decoration: none;
+                font-size: 0.95rem;
+                transition: 0.3s;
+            }
+
+                .forgot-link a:hover {
+                    text-decoration: underline;
+                    color: #28a745;
+                }
     </style>
 </head>
 
@@ -184,7 +206,6 @@
             }
 
             <form asp-action="Login" asp-controller="Account" method="post">
-
                 <div class="form-group">
                     <label asp-for="UserName"></label>
                     <input asp-for="UserName" placeholder="Username" />
@@ -198,7 +219,14 @@
                 </div>
 
                 <button>Login</button>
+
+                <div class="forgot-link">
+                    <a asp-action="ForgotPassword" asp-controller="Account">Forgot Password?</a>
+                </div>
+
             </form>
+
+           
 
         </div>
     </div>
@@ -207,4 +235,3 @@
         <partial name="_ValidationScriptsPartial" />
     }
 </body>
-</html>

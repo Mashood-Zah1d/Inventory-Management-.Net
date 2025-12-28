@@ -18,6 +18,7 @@ namespace Inventory_Management_.NET.Services
         {
             var product = new Product
             {
+                ImageUrl = dto.Image,
                 ProductName = dto.ProductName,
                 ProductDescription = dto.ProductDescription,
                 ProductPrice = dto.ProductPrice,
@@ -33,6 +34,8 @@ namespace Inventory_Management_.NET.Services
             return await dbContext.Products
                 .Select(p=> new GetProductDto
                 {
+
+                    Image=p.ImageUrl,
                     ProductId = p.ProductId,
                     ProductName = p.ProductName,
                     ProductDescription = p.ProductDescription,

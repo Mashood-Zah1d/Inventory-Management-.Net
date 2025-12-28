@@ -1,0 +1,275 @@
+﻿@model List<Inventory_Management_.NET.Dtos.GetProductDto>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Create Order</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            background: url("https://images.pexels.com/photos/259132/pexels-photo-259132.jpeg") center / cover no-repeat fixed;
+            color: #fff;
+            padding: 2rem;
+            position: relative;
+        }
+
+            body::before {
+                content: "";
+                position: fixed;
+                inset: 0;
+                background: rgba(0,0,0,0.65);
+                z-index: -1;
+            }
+
+        h2 {
+            text-align: center;
+            font-weight: 800;
+            margin-bottom: 2.5rem;
+            letter-spacing: 1px;
+            font-size: 2rem;
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+        }
+
+        /* PRODUCT GRID */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.8rem;
+            padding-bottom: 8rem;
+        }
+
+        .product-card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 1rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+            .product-card:hover {
+                transform: translateY(-6px) scale(1.03);
+                box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+            }
+
+            .product-card img {
+                width: 100%;
+                height: 180px;
+                object-fit: cover;
+                border-radius: 15px;
+                margin-bottom: 0.8rem;
+                transition: transform 0.3s ease;
+            }
+
+                .product-card img:hover {
+                    transform: scale(1.05);
+                }
+
+        .product-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
+
+        .product-price {
+            font-weight: 700;
+            color: #00d2ff;
+            margin-bottom: 0.6rem;
+        }
+
+        /* QTY CONTROLS */
+        .qty-control {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.6rem;
+            margin-top: 0.8rem;
+        }
+
+        .qty-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 800;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #fff;
+            transition: all 0.2s ease;
+        }
+
+            .qty-btn.plus {
+                background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+            }
+
+            .qty-btn.minus {
+                background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            }
+
+            .qty-btn:hover {
+                transform: scale(1.1);
+            }
+
+        .qty-value {
+            min-width: 28px;
+            font-weight: 700;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        /* FNF BAR */
+        .fnf-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.85);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .total-text {
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+        }
+
+        .fnf-btn {
+            background: linear-gradient(135deg, #28a745, #71e07d);
+            border: none;
+            padding: 0.7rem 1.8rem;
+            font-weight: 700;
+            border-radius: 14px;
+            color: #fff;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+            .fnf-btn:hover {
+                transform: scale(1.05);
+                box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            }
+
+        /* Empty state */
+        .empty-msg {
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #f0f0f0;
+            grid-column: 1/-1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Create Order</h2>
+
+    <div class="product-grid">
+        @if (Model != null && Model.Any())
+        {
+            foreach (var p in Model)
+            {
+                <div class="product-card"
+                     data-id="@p.ProductId"
+                     data-name="@p.ProductName"
+                     data-price="@p.ProductPrice"
+                     data-image= "@p.Image"
+                >
+
+                    <img src="@(string.IsNullOrEmpty(p.Image) ? "https://via.placeholder.com/300x200?text=No+Image" : p.Image)"
+                         alt="@p.ProductName" />
+
+                    <div class="product-name">@p.ProductName</div>
+                    <div class="product-price">Rs. @p.ProductPrice</div>
+
+                    <div class="qty-control">
+                        <button class="qty-btn minus">−</button>
+                        <span class="qty-value">0</span>
+                        <button class="qty-btn plus">+</button>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p class="empty-msg">No products available</p>
+        }
+    </div>
+
+    <div class="fnf-bar">
+        <div class="total-text">Total: Rs. <span id="grandTotal">0</span></div>
+        <button class="fnf-btn" onclick="finalizeOrder()">FNF / Generate Bill</button>
+    </div>
+
+    <script>
+        const basket = {};
+
+        document.querySelectorAll('.product-card').forEach(card => {
+            const id = card.dataset.id;
+            const name = card.dataset.name;
+            const image = card.dataset.image;
+            const price = parseFloat(card.dataset.price);
+            const qtySpan = card.querySelector('.qty-value');
+            const total = document.getElementById('grandTotal').value;
+
+            card.querySelector('.plus').onclick = () => {
+                basket[id] ??= { id,image, name, price, qty: 0,total };
+                basket[id].qty++;
+                qtySpan.textContent = basket[id].qty;
+                updateTotal();
+            };
+
+            card.querySelector('.minus').onclick = () => {
+                if (!basket[id]) return;
+                basket[id].qty--;
+                qtySpan.textContent = basket[id].qty;
+                if (basket[id].qty === 0) delete basket[id];
+                updateTotal();
+            };
+        });
+
+        function updateTotal() {
+            let total = 0;
+            Object.values(basket).forEach(i => total += i.qty * i.price);
+            document.getElementById('grandTotal').textContent = total;
+        }
+
+        function finalizeOrder() {
+            if (Object.keys(basket).length === 0) {
+                alert("Basket is empty!");
+                return;
+            }
+        localStorage.setItem("basket", JSON.stringify(basket));
+
+        
+        window.location.href = "/Order/GenerateBill";
+        }
+    </script>
+
+</body>
+</html>

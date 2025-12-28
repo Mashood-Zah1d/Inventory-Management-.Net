@@ -4,8 +4,11 @@ using Inventory_Management_.NET.Dtos;
 using Inventory_Management_.NET.Models;
 using Inventory_Management_.NET.Models.Entities;
 using Inventory_Management_.NET.Services;
+using Inventory_Management_.NET.Utils;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
@@ -17,15 +20,16 @@ namespace Inventory_Management_.NET.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly ApplicationDbContext dbContext;
+   
+        private readonly EmailService emailService;
         private readonly AccountService accountService;
-        private readonly IConfiguration config;
 
-        public AccountController (ApplicationDbContext dbContext,AccountService accountService, IConfiguration config)
+        public AccountController(EmailService emailService,AccountService accountService)
         {
-            this.dbContext = dbContext;
+            
+           
+            this.emailService = emailService;
             this.accountService = accountService;
-            this.config = config;
         }
         public IActionResult Index()
         {
@@ -85,6 +89,7 @@ namespace Inventory_Management_.NET.Controllers
             if (!result.Success)
             {
                 ModelState.AddModelError("", result.Message);
+                return View();
             }
 
             var options = new CookieOptions
@@ -95,9 +100,117 @@ namespace Inventory_Management_.NET.Controllers
                 Expires = DateTimeOffset.UtcNow.AddHours(2)
             };
 
+            Console.WriteLine(result.Data);
             Response.Cookies.Append("JwtToken", result.Data, options);
 
             return RedirectToAction("Index","Home");
         }
+        private string GenerateResetCode()
+        {
+            var random = new Random();
+            return random.Next(100000, 999999).ToString();
+        }
+
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> SendMail(string email)
+        {
+            var response = await accountService.GetUserByEmailAsync(email);
+            if (!response.Success)
+            {
+                ModelState.AddModelError("", response.Message);
+                ViewBag.Email = email;
+                return View("ForgotPassword");
+            }
+
+            var code = GenerateResetCode();
+
+            await accountService.SaveResetCodeAsync(email, code);
+
+            var dto = new ForgotPasswordDto
+            {
+                Email = email,
+                Code = code
+            };
+
+            await accountService.SendPasswordResetEmailAsync(dto);
+
+            ViewBag.Email = email;
+            ViewBag.CodeSent = true;
+            ViewBag.SuccessMessage = "Verification code sent to your email";
+
+            return View("ForgotPassword");
+        }
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> VerifyCode(string email, string userCode)
+        {
+            var isValid = await accountService.VerifyResetCodeAsync(email, userCode);
+
+            if (!isValid)
+            {
+                ModelState.AddModelError("", "Invalid or expired code.");
+                ViewBag.Email = email;
+                ViewBag.CodeSent = true;
+                return View("ForgotPassword");
+            }
+
+            return RedirectToAction("SetNewPassword", new { email });
+        }
+
+        [HttpGet]
+        public IActionResult SetNewPassword(string email)
+        {
+            if (string.IsNullOrEmpty(email))
+                return RedirectToAction("ForgotPassword");
+
+            ViewBag.Email = email;
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SetNewPassword(string email, string newPassword, string confirmPassword)
+        {
+            if (string.IsNullOrEmpty(email))
+                return RedirectToAction("ForgotPassword");
+
+            // Basic validation
+            if (string.IsNullOrEmpty(newPassword) || string.IsNullOrEmpty(confirmPassword))
+            {
+                ModelState.AddModelError("", "Password fields cannot be empty.");
+                ViewBag.Email = email;
+                return View();
+            }
+
+            if (newPassword != confirmPassword)
+            {
+                ModelState.AddModelError("", "Passwords do not match.");
+                ViewBag.Email = email;
+                return View();
+            }
+
+            // Update password using service
+            var result = await accountService.UpdatePasswordAsync(email, newPassword);
+
+            if (!result.Success)
+            {
+                ModelState.AddModelError("", result.Message);
+                ViewBag.Email = email;
+                return View();
+            }
+
+            TempData["SuccessMessage"] = "Password updated successfully! You can now login.";
+            return RedirectToAction("Login", "Account");
+        }
+
+
     }
 }
