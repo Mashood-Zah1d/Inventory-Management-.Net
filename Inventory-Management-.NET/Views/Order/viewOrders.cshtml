@@ -1,0 +1,137 @@
+﻿@model List<Inventory_Management_.NET.Dtos.OrderDto>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>All Orders</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)), url("https://images.pexels.com/photos/6169650/pexels-photo-6169650.jpeg") center / cover no-repeat fixed;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top-bar {
+            height: 72px;
+            padding: 1.5rem 2.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .brand {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #fff;
+            text-decoration: none;
+        }
+
+            .brand span {
+                color: #00d2ff;
+            }
+
+        .page {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.18);
+            backdrop-filter: blur(18px);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,.6);
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 30px 60px rgba(0,0,0,.7);
+            }
+
+            .card h3 {
+                margin: 0;
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: #00d2ff;
+            }
+
+        .info {
+            font-size: 0.95rem;
+            color: #e0e0e0;
+        }
+
+        .total {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #00ffcc;
+            margin-top: 0.5rem;
+        }
+
+        .actions a {
+            margin-top: 0.8rem;
+            display: inline-block;
+            text-decoration: none;
+            padding: 0.4rem 0.7rem;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #fff;
+            background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .actions a:hover {
+                transform: scale(1.05);
+                box-shadow: 0 8px 20px rgba(0,0,0,.5);
+            }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <a asp-controller="Home" asp-action="Index" class="brand">Inventory<span>Hub</span></a>
+    </div>
+
+    <div class="page">
+        @foreach (var order in Model)
+        {
+            <div class="card">
+                <h3>Order #@order.OrderId.ToString().Substring(0, 8)</h3>
+                <p class="info"><strong>Customer:</strong> @order.CustomerName</p>
+                <p class="info"><strong>Email:</strong> @order.Email</p>
+                <p class="info"><strong>Phone:</strong> @order.Phone</p>
+                <p class="info"><strong>Date:</strong> @order.OrderDate.ToString("yyyy-MM-dd")</p>
+                <div class="total">Total: $@order.TotalAmount.ToString("0.00")</div>
+                <div class="actions">
+                    <a asp-controller="Order" asp-action="ViewOrderDetails" asp-route-id="@order.OrderId">View Details</a>
+                </div>
+            </div>
+        }
+    </div>
+
+</body>
+</html>

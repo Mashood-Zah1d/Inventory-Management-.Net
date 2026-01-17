@@ -68,6 +68,12 @@ namespace Inventory_Management_.NET.Controllers
             return View("ThankYou", billViewModel);
         }
 
+        public async Task<IActionResult> viewOrders()
+        {
+            var orders = await orderServices.GetAllOrdersAsync();
+            return View(orders);
+        }
+
 
     }
 }

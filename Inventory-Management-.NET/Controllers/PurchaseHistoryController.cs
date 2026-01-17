@@ -1,63 +1,38 @@
-﻿using Inventory_Management_.NET.Data;
-using Inventory_Management_.NET.Models;
-using Inventory_Management_.NET.Models.Entities;
+﻿using Inventory_Management_.NET.Models;
+using Inventory_Management_.NET.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Inventory_Management_.NET.Controllers
 {
-  
     public class PurchaseHistoryController : Controller
     {
-        private readonly ApplicationDbContext dbContext;
+        private readonly PurchaseHistoryService purchaseHistoryService;
+        private readonly ProductServices productService;
 
-        public PurchaseHistoryController(ApplicationDbContext dbContext)
+        public PurchaseHistoryController(PurchaseHistoryService purchaseHistoryService , ProductServices productService)
         {
-            this.dbContext = dbContext;
+            this.purchaseHistoryService = purchaseHistoryService;
+            this.productService = productService;
         }
-        public IActionResult Index()
+
+        public async Task<IActionResult> Add()
         {
+            ViewBag.ProductOption = await productService.GetAllProductAsync();
             return View();
         }
-        [HttpGet]
-        public async Task<IActionResult> productOption()
-        {
-            var product = await dbContext.Products.ToListAsync();
-
-            ViewBag.ProductOption = product;
-
-            return Ok(product);
-
-            //return View();
-        } 
 
         [HttpPost]
-
-        public async Task<IActionResult> Add([FromBody] PurchaseHistoryViewModel viewModel)
+        public async Task<IActionResult> Add(PurchaseHistoryViewModel viewModel)
         {
-            var product = await dbContext.Products.FindAsync(viewModel.ProductId);
-            if(product is null)
+            var result = await purchaseHistoryService.AddPurchaseAsync(viewModel);
+
+            if (!result.Success)
             {
-                return StatusCode(404, "Product Not Found");
+                return BadRequest(result.Message);
             }
-            int quantity = viewModel.purchaseQuantity + Convert.ToInt32(product.ProductQuantity);
-            var purchase = new purchaseHistory
-            {
-                ProductId = viewModel.ProductId,
-                purchaseQuantity = viewModel.purchaseQuantity,
-                PurchaseDate = viewModel.PurchaseDate,
-                TotalPrice = viewModel.TotalPrice,
-            };
-            product.ProductQuantity = quantity;
-            await dbContext.purchaseHistories.AddAsync(purchase);
-            await dbContext.SaveChangesAsync();
 
-            return StatusCode(200, "Purchase Added SuccessFully");
-            //return View();
-
+            return RedirectToAction("index", "Home");
         }
-
-
-        
     }
 }

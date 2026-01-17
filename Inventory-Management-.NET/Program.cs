@@ -23,6 +23,8 @@ builder.Services.AddScoped<AccountService>();
 builder.Services.AddScoped<CloudinaryService>();
 builder.Services.AddSingleton<EmailService>();
 builder.Services.AddScoped<OrderServices>();
+builder.Services.AddScoped<CustomerServices>();
+builder.Services.AddScoped<PurchaseHistoryService>();
 
 
 

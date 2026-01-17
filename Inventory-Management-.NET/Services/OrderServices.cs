@@ -2,6 +2,7 @@
 using Inventory_Management_.NET.Dtos;
 using Inventory_Management_.NET.Models.Entities;
 using Inventory_Management_.NET.Utils;
+using Microsoft.EntityFrameworkCore;
 
 namespace Inventory_Management_.NET.Services
 {
@@ -59,5 +60,22 @@ namespace Inventory_Management_.NET.Services
             };
             
         }
+        public async Task<List<OrderDto>> GetAllOrdersAsync()
+        {
+            return await (
+                from o in dbContext.Orders
+                join c in dbContext.Customers on o.CustomerId equals c.CustomerId
+                select new OrderDto
+                {
+                    OrderId = o.OrderId,
+                    OrderDate = o.OrderDate,
+                    TotalAmount = o.TotalAmount,
+                    CustomerName = c.CustomerName,
+                    Email = c.Email,
+                    Phone = c.Phone
+                }
+            ).ToListAsync();
+        }
+
     }
 }

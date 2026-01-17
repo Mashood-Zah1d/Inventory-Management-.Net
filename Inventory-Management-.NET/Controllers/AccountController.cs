@@ -46,17 +46,8 @@ namespace Inventory_Management_.NET.Controllers
         [HttpPost]
         public async Task<IActionResult> Signup(SignupViewModel model)
         {
-            var dto = new SignupDto
-            {
 
-                UserName = model.UserName,
-                Name = model.Name,
-                Email = model.Email,
-                Password = model.Password,
-                secretKey = model.secretKey
-            };
-
-            var result = await accountService.AddUserAsync(dto);
+            var result = await accountService.AddUserAsync(model);
 
             if (!result.Success)
             {
@@ -80,12 +71,7 @@ namespace Inventory_Management_.NET.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            var dto = new LoginDto
-            {
-                Password = model.Password,
-                UserName = model.UserName,
-            };
-            var result = await accountService.VerifyUserAsync(dto);
+            var result = await accountService.VerifyUserAsync(model);
             if (!result.Success)
             {
                 ModelState.AddModelError("", result.Message);
@@ -177,39 +163,22 @@ namespace Inventory_Management_.NET.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SetNewPassword(string email, string newPassword, string confirmPassword)
+        [HttpPost]
+        public async Task<IActionResult> SetNewPassword(setNewPasswordViewModel model)
         {
-            if (string.IsNullOrEmpty(email))
-                return RedirectToAction("ForgotPassword");
 
-            // Basic validation
-            if (string.IsNullOrEmpty(newPassword) || string.IsNullOrEmpty(confirmPassword))
-            {
-                ModelState.AddModelError("", "Password fields cannot be empty.");
-                ViewBag.Email = email;
-                return View();
-            }
-
-            if (newPassword != confirmPassword)
-            {
-                ModelState.AddModelError("", "Passwords do not match.");
-                ViewBag.Email = email;
-                return View();
-            }
-
-            // Update password using service
-            var result = await accountService.UpdatePasswordAsync(email, newPassword);
+            var result = await accountService.UpdatePasswordAsync(model);
 
             if (!result.Success)
             {
                 ModelState.AddModelError("", result.Message);
-                ViewBag.Email = email;
-                return View();
+                return View(model);
             }
 
             TempData["SuccessMessage"] = "Password updated successfully! You can now login.";
             return RedirectToAction("Login", "Account");
         }
+
 
 
     }

@@ -1,6 +1,7 @@
 ﻿using Azure;
 using Inventory_Management_.NET.Data;
 using Inventory_Management_.NET.Dtos;
+using Inventory_Management_.NET.Models;
 using Inventory_Management_.NET.Models.Entities;
 using Inventory_Management_.NET.Utils;
 using Microsoft.EntityFrameworkCore;
@@ -24,46 +25,78 @@ namespace Inventory_Management_.NET.Services
             this.emailService = emailService;
         }
 
-        public async Task<ResponseMessage<User>> AddUserAsync(SignupDto dto)
+        private string GenerateJwtToken(User user, string secretKey)
         {
-            if (dto.secretKey != "abc.123")
+            var key = Encoding.UTF8.GetBytes(secretKey);
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var tokenDescription = new SecurityTokenDescriptor
             {
-                return new ResponseMessage<User>
+                Subject = new ClaimsIdentity(new Claim[]
                 {
-                    Success = false,
-                    Message = "The Provided Key Doesnot Matched. Provide The Correct Secret Key To Signup"
-                };
-            }
-            string hashPassword = BCrypt.Net.BCrypt.HashPassword(dto.Password);
-            var user = new User
-            {
-                UserName = dto.UserName,
-                Password = hashPassword,
-                Email = dto.Email,
-                Name = dto.Name,
+                    new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+                    new Claim(ClaimTypes.Name, user.UserName)
+                }),
+                Expires = DateTime.UtcNow.AddHours(10),
+                SigningCredentials = new SigningCredentials(
+                    new SymmetricSecurityKey(key),
+                    SecurityAlgorithms.HmacSha256Signature)
+
             };
 
-            var Results = await dbContext.AddAsync(user);
-            await dbContext.SaveChangesAsync();
+            var token = tokenHandler.CreateToken(tokenDescription);
+            return tokenHandler.WriteToken(token);
+        }
 
-            if (Results == null)
+        public async Task<ResponseMessage<User>> AddUserAsync(SignupViewModel model)
+        {
+            if (model.secretKey != "abc.123")
             {
                 return new ResponseMessage<User>
                 {
                     Success = false,
-                    Message = "Error Inserting The User. Try Again!"
+                    Message = "Invalid secret key"
                 };
             }
+
+            bool emailExists = await dbContext.Users
+                .AnyAsync(u => u.Email == model.Email);
+
+            if (emailExists)
+            {
+                return new ResponseMessage<User>
+                {
+                    Success = false,
+                    Message = "Email already exists"
+                };
+            }
+
+            var user = new User
+            {
+                UserName = model.UserName,
+                Email = model.Email,
+                Name = model.Name,
+                Password = BCrypt.Net.BCrypt.HashPassword(model.Password)
+            };
+
+            await dbContext.Users.AddAsync(user);
+            await dbContext.SaveChangesAsync();
 
             return new ResponseMessage<User>
             {
                 Success = true,
-                Message = "User Added SuccessFully !!"
+                Message = "User created successfully"
             };
         }
 
-        public async Task<ResponseMessage<string>> VerifyUserAsync(LoginDto dto)
+        public async Task<ResponseMessage<string>> VerifyUserAsync(LoginViewModel model)
         {
+            var dto = new LoginDto
+            {
+                Password = model.Password,
+                UserName = model.UserName,
+            };
+
             var user = await dbContext.Users
             .FirstOrDefaultAsync(u => u.UserName == dto.UserName);
 
@@ -97,28 +130,6 @@ namespace Inventory_Management_.NET.Services
             };
         }
 
-        private string GenerateJwtToken(User user, string secretKey)
-        {
-            var key = Encoding.UTF8.GetBytes(secretKey);
-
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var tokenDescription = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
-                    new Claim(ClaimTypes.Name, user.UserName)
-                }),
-                Expires = DateTime.UtcNow.AddHours(10),
-                SigningCredentials = new SigningCredentials(
-                    new SymmetricSecurityKey(key),
-                    SecurityAlgorithms.HmacSha256Signature)
-
-            };
-
-            var token = tokenHandler.CreateToken(tokenDescription);
-            return tokenHandler.WriteToken(token);
-        }
 
         public async Task<ResponseMessage<bool>> SendPasswordResetEmailAsync(ForgotPasswordDto dto)
         {
@@ -213,8 +224,10 @@ namespace Inventory_Management_.NET.Services
             return true;
         }
 
-        public async Task<ResponseMessage<User>> UpdatePasswordAsync(string email, string newPassword)
+        public async Task<ResponseMessage<User>> UpdatePasswordAsync(setNewPasswordViewModel model)
         {
+            var email = model.Email;
+            var newPassword = model.NewPassword;
             var user = await dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
             if (user == null)
             {
