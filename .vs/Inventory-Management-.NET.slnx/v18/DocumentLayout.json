@@ -3,40 +3,64 @@
   "WorkspaceRootPath": "D:\\Inventory-Management-.NET\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\views\\order\\vieworders.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\views\\order\\vieworders.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\views\\customer\\viewcustomer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\views\\customer\\viewcustomer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\services\\purchasehistoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\services\\purchasehistoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\controllers\\purchasehistorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\controllers\\purchasehistorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\views\\purchasehistory\\add.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\views\\purchasehistory\\add.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\services\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\services\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\services\\productservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\services\\productservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\models\\setnewpasswordviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\models\\setnewpasswordviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\models\\addproductviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\models\\addproductviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\views\\product\\getproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\views\\product\\getproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\views\\product\\editproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\views\\product\\editproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\views\\product\\add.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\views\\product\\add.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\dtos\\findproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\dtos\\findproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\models\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\models\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\models\\entities\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\models\\entities\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|d:\\inventory-management-.net\\inventory-management-.net\\dtos\\editproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDDD567C-63D3-626C-B9FD-8CA20DB0389B}|Inventory-Management-.NET\\Inventory-Management-.NET.csproj|solutionrelative:inventory-management-.net\\dtos\\editproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,124 +70,200 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "viewOrders.cshtml",
-              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Views\\Order\\viewOrders.cshtml",
-              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Views\\Order\\viewOrders.cshtml",
-              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Views\\Order\\viewOrders.cshtml",
-              "RelativeToolTip": "Inventory-Management-.NET\\Views\\Order\\viewOrders.cshtml",
-              "ViewState": "AgIAAHUAAAAAAAAAAAAkwIkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-01-17T21:23:22.947Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "viewCustomer.cshtml",
-              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Views\\Customer\\viewCustomer.cshtml",
-              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Views\\Customer\\viewCustomer.cshtml",
-              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Views\\Customer\\viewCustomer.cshtml",
-              "RelativeToolTip": "Inventory-Management-.NET\\Views\\Customer\\viewCustomer.cshtml",
-              "ViewState": "AgIAAF0AAAAAAAAAAAAkwHEAAAAAAAAAAAAAAA==",
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Inventory-Management-.NET\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAM8AAAAAAAAAAADwv94AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-01-17T21:21:26.586Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Program.cs",
-              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Program.cs",
-              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Program.cs",
-              "RelativeToolTip": "Inventory-Management-.NET\\Program.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAAABYAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T21:05:11.799Z",
+              "WhenOpened": "2026-01-18T12:02:28.914Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Add.cshtml",
-              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Views\\PurchaseHistory\\Add.cshtml",
-              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Views\\PurchaseHistory\\Add.cshtml",
-              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Views\\PurchaseHistory\\Add.cshtml",
-              "RelativeToolTip": "Inventory-Management-.NET\\Views\\PurchaseHistory\\Add.cshtml",
-              "ViewState": "AgIAAHMAAAAAAAAAAAAkwIUAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-01-17T21:03:08.005Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PurchaseHistoryController.cs",
-              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Controllers\\PurchaseHistoryController.cs",
-              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Controllers\\PurchaseHistoryController.cs",
-              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Controllers\\PurchaseHistoryController.cs",
-              "RelativeToolTip": "Inventory-Management-.NET\\Controllers\\PurchaseHistoryController.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAAAB8AAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T20:54:18.94Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PurchaseHistoryService.cs",
-              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Services\\PurchaseHistoryService.cs",
-              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Services\\PurchaseHistoryService.cs",
-              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Services\\PurchaseHistoryService.cs",
-              "RelativeToolTip": "Inventory-Management-.NET\\Services\\PurchaseHistoryService.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAAADYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T20:53:24.467Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "setNewPasswordViewModel.cs",
-              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Models\\setNewPasswordViewModel.cs",
-              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Models\\setNewPasswordViewModel.cs",
-              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Models\\setNewPasswordViewModel.cs",
-              "RelativeToolTip": "Inventory-Management-.NET\\Models\\setNewPasswordViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T20:36:03.335Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Controllers\\AccountController.cs",
-              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "Inventory-Management-.NET\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAgwD0AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T20:26:02.608Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "AccountService.cs",
               "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Services\\AccountService.cs",
               "RelativeDocumentMoniker": "Inventory-Management-.NET\\Services\\AccountService.cs",
               "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Services\\AccountService.cs",
               "RelativeToolTip": "Inventory-Management-.NET\\Services\\AccountService.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAAADQAAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAAOkAAAAAAAAAAADwv/gAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T20:26:47.34Z",
+              "WhenOpened": "2026-01-18T12:00:36.75Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Controllers\\AccountController.cs",
+              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Inventory-Management-.NET\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAK8AAAAAAAAAAADwv8AAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-18T12:00:07.525Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Inventory-Management-.NET\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAACQAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-18T11:53:39.401Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "getProduct.cshtml",
+              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Views\\Product\\getProduct.cshtml",
+              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Views\\Product\\getProduct.cshtml",
+              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Views\\Product\\getProduct.cshtml",
+              "RelativeToolTip": "Inventory-Management-.NET\\Views\\Product\\getProduct.cshtml",
+              "ViewState": "AgIAAKUAAAAAAAAAAADwv6UAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-18T11:37:50.53Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Inventory-Management-.NET\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAABYBAAAAAAAAAADwvywBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-18T11:20:08.492Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProductServices.cs",
+              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Services\\ProductServices.cs",
+              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Services\\ProductServices.cs",
+              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Services\\ProductServices.cs",
+              "RelativeToolTip": "Inventory-Management-.NET\\Services\\ProductServices.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAF0AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-18T09:08:09.41Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AddProductViewModel.cs",
+              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Models\\AddProductViewModel.cs",
+              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Models\\AddProductViewModel.cs",
+              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Models\\AddProductViewModel.cs",
+              "RelativeToolTip": "Inventory-Management-.NET\\Models\\AddProductViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-18T09:05:38.734Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Add.cshtml",
+              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Views\\Product\\Add.cshtml",
+              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Views\\Product\\Add.cshtml",
+              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Views\\Product\\Add.cshtml",
+              "RelativeToolTip": "Inventory-Management-.NET\\Views\\Product\\Add.cshtml",
+              "ViewState": "AgIAAMQAAAAAAAAAAAAAAOQAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-18T09:02:11.099Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Controllers\\ProductController.cs",
+              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "Inventory-Management-.NET\\Controllers\\ProductController.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAAADkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-18T07:20:06.391Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "editProduct.cshtml",
+              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Views\\Product\\editProduct.cshtml",
+              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Views\\Product\\editProduct.cshtml",
+              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Views\\Product\\editProduct.cshtml",
+              "RelativeToolTip": "Inventory-Management-.NET\\Views\\Product\\editProduct.cshtml",
+              "ViewState": "AgIAACYAAAAAAAAAAAAAADcAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-18T11:23:17.746Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "FindProductDto.cs",
+              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Dtos\\FindProductDto.cs",
+              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Dtos\\FindProductDto.cs",
+              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Dtos\\FindProductDto.cs",
+              "RelativeToolTip": "Inventory-Management-.NET\\Dtos\\FindProductDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-18T08:50:09.474Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Product.cs",
+              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Models\\Entities\\Product.cs",
+              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Models\\Entities\\Product.cs",
+              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Models\\Entities\\Product.cs",
+              "RelativeToolTip": "Inventory-Management-.NET\\Models\\Entities\\Product.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAzwAwAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-18T11:18:47.838Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "EditProductDto.cs",
+              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Dtos\\EditProductDto.cs",
+              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Dtos\\EditProductDto.cs",
+              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Dtos\\EditProductDto.cs",
+              "RelativeToolTip": "Inventory-Management-.NET\\Dtos\\EditProductDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-18T08:37:30.736Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Customer.cs",
+              "DocumentMoniker": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Models\\Entities\\Customer.cs",
+              "RelativeDocumentMoniker": "Inventory-Management-.NET\\Models\\Entities\\Customer.cs",
+              "ToolTip": "D:\\Inventory-Management-.NET\\Inventory-Management-.NET\\Models\\Entities\\Customer.cs",
+              "RelativeToolTip": "Inventory-Management-.NET\\Models\\Entities\\Customer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-18T09:23:15.28Z"
             }
           ]
         }

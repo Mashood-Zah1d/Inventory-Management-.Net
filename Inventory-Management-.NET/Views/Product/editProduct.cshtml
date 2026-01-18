@@ -13,14 +13,12 @@
         <div class="card-body">
             <form asp-action="editProduct" method="post">
 
-                <!-- Product ID (READ ONLY + SENT) -->
+               
                 <div class="mb-3">
                     <label class="form-label">Product ID</label>
                     <input asp-for="ProductId" class="form-control" readonly />
                 </div>
 
-                <!-- OR (better approach) -->
-                <!-- <input type="hidden" asp-for="ProductId" /> -->
 
                 <div class="mb-3">
                     <label asp-for="ProductName" class="form-label"></label>
@@ -47,10 +45,19 @@
                 </div>
 
                 <div class="mb-3">
-                    <label asp-for="ProductCategory" class="form-label"></label>
-                    <input asp-for="ProductCategory" class="form-control" />
+                    <label asp-for="ProductCategory" class="form-label">Category</label>
+                    <select asp-for="ProductCategory" class="form-control">
+                        <option value="">-- Select Category --</option>
+                        @foreach (var c in ViewBag.CategoryOption)
+                        {
+                            <option value="@c.categoryId" @@(Model.ProductCategory= =c.categoryId ? "selected" : "" )>
+                                @c.categoryName
+                            </option>
+                        }
+                    </select>
                     <span asp-validation-for="ProductCategory" class="text-danger"></span>
                 </div>
+
 
                 <button type="submit" class="btn btn-success">
                     Update Product

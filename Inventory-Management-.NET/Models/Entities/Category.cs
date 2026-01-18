@@ -2,7 +2,9 @@
 {
     public class Category
     {
-        public Guid categoryId { get; set; }
-        public string categoryName { get; set; }
+        public Guid CategoryId { get; set; }
+        public string CategoryName { get; set; }
+
+        public ICollection<Product> Products { get; set; }
     }
 }

@@ -36,6 +36,12 @@ namespace Inventory_Management_.NET.Controllers
             return View();
         }
 
+        private string GenerateResetCode()
+        {
+            var random = new Random();
+            return random.Next(100000, 999999).ToString();
+        }
+
         [HttpGet]
         public async Task<IActionResult> Signup()
         {
@@ -90,11 +96,6 @@ namespace Inventory_Management_.NET.Controllers
             Response.Cookies.Append("JwtToken", result.Data, options);
 
             return RedirectToAction("Index","Home");
-        }
-        private string GenerateResetCode()
-        {
-            var random = new Random();
-            return random.Next(100000, 999999).ToString();
         }
 
         [HttpGet]
@@ -176,6 +177,17 @@ namespace Inventory_Management_.NET.Controllers
             }
 
             TempData["SuccessMessage"] = "Password updated successfully! You can now login.";
+            return RedirectToAction("Login", "Account");
+        }
+
+        [HttpPost]
+        public IActionResult Logout()
+        {
+            if (Request.Cookies.ContainsKey("JwtToken"))
+            {
+                Response.Cookies.Delete("JwtToken");
+            }
+
             return RedirectToAction("Login", "Account");
         }
 

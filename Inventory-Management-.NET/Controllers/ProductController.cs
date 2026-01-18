@@ -6,6 +6,7 @@ using Inventory_Management_.NET.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace Inventory_Management_.NET.Controllers
 {
@@ -26,39 +27,33 @@ namespace Inventory_Management_.NET.Controllers
 
         [HttpGet]
         [Authorize]
-        public IActionResult Add()
+        public async Task<IActionResult> Add()
         {
+            ViewBag.CategoryOption = await productService.GetCategoryAsync();
             return View();
         }
 
 
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> Add( AddProductViewModel viewmodel)
+        public async Task<IActionResult> Add(AddProductViewModel viewmodel)
         {
-            var ImageUrl = await cloudinaryService.UploadImageAsync(viewmodel.Image);
+            if (!ModelState.IsValid)
+                return View(viewmodel);
 
+            var productDto = await productService.AddProductAsync(viewmodel);
 
-            var Dto = new AddProductDto
-            {
-                Image=ImageUrl.Data,
-                ProductName = viewmodel.ProductName,
-                ProductDescription = viewmodel.ProductDescription,
-                ProductPrice = viewmodel.ProductPrice,
-                ProductQuantity = viewmodel.ProductQuantity,
-                ProductCategory = viewmodel.ProductCategory,
-               
-            };
-
-            await productService.AddProductAsync(Dto);
-            return RedirectToAction("getProduct","Product");
+            TempData["Success"] = $"{productDto.ProductName} added successfully!";
+            return RedirectToAction("GetProduct", "Product");
         }
 
+
         [HttpGet]
-        
         public async Task<IActionResult> getProduct()
         {
             var Product = await productService.GetAllProductAsync();
+            var categories = await productService.GetCategoryAsync();
+            ViewBag.CategoryMap = categories.ToDictionary(c => c.categoryId, c => c.categoryName);
             return View(Product);
         }
 
@@ -66,24 +61,23 @@ namespace Inventory_Management_.NET.Controllers
         [Authorize]
         public async Task<IActionResult> editProduct(Guid id)
         {
-            var Product = await productService.FindProduct(id);
-            if(Product is null)
+            var productDto = await productService.FindProduct(id);
+            if(productDto is null)
             {
                 return NotFound("Product Not Founded");
             }
 
-            var product = new AddProductViewModel
+            var viewModel = new AddProductViewModel
             {
-                ProductId = Product.ProductId,
-                ProductName= Product.ProductName,
-                ProductCategory = Product.ProductCategory,
-                ProductDescription= Product.ProductDescription,
-                ProductPrice=Product.ProductPrice,
-                ProductQuantity=Product.ProductQuantity
+                ProductId = productDto.ProductId,
+                ProductName = productDto.ProductName,
+                ProductDescription = productDto.ProductDescription,
+                ProductPrice = productDto.ProductPrice,
+                ProductQuantity = productDto.ProductQuantity,
+                ProductCategory = productDto.ProductCategory
             };
-
-
-            return View(product);
+            ViewBag.CategoryOption = await productService.GetCategoryAsync();
+            return View(viewModel);
         }
 
         [HttpPost]
@@ -94,7 +88,7 @@ namespace Inventory_Management_.NET.Controllers
             var dto = new EditProductDto
             {
                 ProductName = viewModel.ProductName,
-                ProductCategory = viewModel.ProductCategory,
+                ProductCategory = viewModel.CategoryId,
                 ProductDescription = viewModel.ProductDescription,
                 ProductPrice = viewModel.ProductPrice,
                 ProductQuantity = viewModel.ProductQuantity

@@ -9,6 +9,6 @@
 
         public decimal ProductQuantity { get; set; }
 
-        public int ProductCategory { get; set; }
+        public Guid ProductCategory { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Azure.Core
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -62,16 +63,20 @@
                     color: #1e90ff; /* Hub in blue */
                 }
 
-            header .user-login a {
+            header .user-login a,
+            header .user-login button {
                 color: #fff;
                 text-decoration: none;
                 padding: 0.4rem 1rem;
                 border: 1px solid rgba(255,255,255,0.6);
                 border-radius: 10px;
                 transition: all 0.3s ease;
+                background: transparent;
+                font-weight: 600;
             }
 
-                header .user-login a:hover {
+                header .user-login a:hover,
+                header .user-login button:hover {
                     background: rgba(255,255,255,0.9);
                     color: #1f1f2e;
                 }
@@ -199,7 +204,6 @@
             background: rgba(255,255,255,0.2);
             border-radius: 10px;
         }
-
     </style>
 </head>
 <body>
@@ -211,7 +215,16 @@
             </a>
         </div>
         <div class="user-login">
-            <a asp-controller="Account" asp-action="Login">Login</a>
+            @if (ViewBag.IsLoggedIn == true)
+            {
+                <form method="post" asp-controller="Account" asp-action="Logout" style="display:inline;">
+                    <button type="submit" class="btn-modern">Logout</button>
+                </form>
+            }
+            else
+            {
+                <a asp-controller="Account" asp-action="Login">Login</a>
+            }
         </div>
     </header>
 

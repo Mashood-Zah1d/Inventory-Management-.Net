@@ -170,7 +170,12 @@
                 <p>@product.ProductDescription</p>
                 <p class="price">$@product.ProductPrice</p>
                 <p class="quantity">Qty: @product.ProductQuantity</p>
-                <p class="category">Category: @product.ProductCategory</p>
+                <p class="category">
+                    Category: @(ViewBag.CategoryMap.ContainsKey(product.ProductCategory) ? ViewBag.CategoryMap[product.ProductCategory] : "Unknown")
+                </p>
+
+
+
 
                 <div class="actions">
                     <a asp-controller="Product" asp-action="editProduct" asp-route-id="@product.ProductId">Edit</a>

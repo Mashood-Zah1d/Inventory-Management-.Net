@@ -1,5 +1,6 @@
 ﻿using Inventory_Management_.NET.Data;
 using Inventory_Management_.NET.Dtos;
+using Inventory_Management_.NET.Models;
 using Inventory_Management_.NET.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,26 +9,66 @@ namespace Inventory_Management_.NET.Services
     public class ProductServices
     {
         private readonly ApplicationDbContext dbContext;
+        private readonly CloudinaryService cloudinaryService;
 
-        public ProductServices(ApplicationDbContext dbContext)
+        public ProductServices(ApplicationDbContext dbContext,CloudinaryService cloudinaryService)
         {
             this.dbContext = dbContext;
+            this.cloudinaryService = cloudinaryService;
         }
 
-        public async Task AddProductAsync(AddProductDto dto)
+        public async Task<List<CategoryDto>> GetCategoryAsync()
         {
+            return await dbContext.Categories.Select(c => new CategoryDto
+            {
+                categoryId=c.CategoryId,
+                categoryName=c.CategoryName
+            }).ToListAsync();
+        }
+
+        public async Task<AddProductDto> AddProductAsync(AddProductViewModel viewmodel)
+        {
+            var imageUrl = await cloudinaryService.UploadImageAsync(viewmodel.Image);
+
+            var category = await dbContext.Categories
+       .FirstOrDefaultAsync(c => c.CategoryId == viewmodel.ProductCategory);
+
+
+
+
+            if (category == null)
+            {
+                throw new Exception("Selected category does not exist.");
+            }
+
             var product = new Product
             {
-                ImageUrl = dto.Image,
-                ProductName = dto.ProductName,
-                ProductDescription = dto.ProductDescription,
-                ProductPrice = dto.ProductPrice,
-                ProductQuantity = dto.ProductQuantity,
-                ProductCategory = dto.ProductCategory
+                ImageUrl = imageUrl.Data,
+                ProductName = viewmodel.ProductName,
+                ProductDescription = viewmodel.ProductDescription,
+                ProductPrice = viewmodel.ProductPrice,
+                ProductQuantity = viewmodel.ProductQuantity,
+                CategoryId = category.CategoryId
+
             };
+
             await dbContext.Products.AddAsync(product);
             await dbContext.SaveChangesAsync();
+            
+   
+
+            return new AddProductDto
+            {
+                Image = imageUrl.Data,
+                ProductName = viewmodel.ProductName,
+                ProductDescription = viewmodel.ProductDescription,
+                ProductPrice = viewmodel.ProductPrice,
+                ProductQuantity = viewmodel.ProductQuantity,
+                ProductCategory = category.CategoryId
+            };
+
         }
+
 
         public async Task<List<GetProductDto>> GetAllProductAsync()
         {
@@ -41,7 +82,7 @@ namespace Inventory_Management_.NET.Services
                     ProductDescription = p.ProductDescription,
                     ProductPrice = p.ProductPrice,
                     ProductQuantity = p.ProductQuantity,
-                    ProductCategory = p.ProductCategory
+                    ProductCategory = p.CategoryId
                 })
                 .ToListAsync();
         }
@@ -56,7 +97,7 @@ namespace Inventory_Management_.NET.Services
                 ProductDescription = p.ProductDescription,
                 ProductPrice = p.ProductPrice,
                 ProductQuantity = p.ProductQuantity,
-                ProductCategory = p.ProductCategory
+                ProductCategory = p.CategoryId
             };
         }
 
@@ -68,7 +109,7 @@ namespace Inventory_Management_.NET.Services
             product.ProductDescription = dto.ProductDescription;
             product.ProductPrice = dto.ProductPrice;
             product.ProductQuantity = dto.ProductQuantity;
-            product.ProductCategory = dto.ProductCategory;
+            product.CategoryId = dto.ProductCategory;
 
             dbContext.SaveChangesAsync();
         }

@@ -10,7 +10,7 @@
 
         public decimal ProductQuantity { get; set; }
 
-        public int ProductCategory { get; set; }
+        public Guid ProductCategory { get; set; }
 
         public IFormFile Image { get; set; }
     }

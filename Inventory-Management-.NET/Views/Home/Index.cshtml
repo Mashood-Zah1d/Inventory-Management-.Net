@@ -180,14 +180,12 @@
     }
 
     thead th {
-        
         font-weight: 600;
         text-align: center;
         padding: 0.4rem 0.8rem;
     }
 
     tbody tr {
-       
         border-radius: 15px;
         transition: all 0.3s ease;
     }
@@ -271,7 +269,11 @@
                                     <td>@p.ProductDescription</td>
                                     <td>$@p.ProductPrice</td>
                                     <td>@p.ProductQuantity</td>
-                                    <td>@p.ProductCategory</td>
+                                    <td>
+                                        @(ViewBag.CategoryMap != null && ViewBag.CategoryMap.ContainsKey(p.CategoryId)
+                                                                        ? ViewBag.CategoryMap[p.CategoryId]
+                                                                        : "Unknown")
+                                    </td>
                                     <td>
                                         <a class="btn btn-primary btn-action" asp-controller="Product" asp-action="editProduct" asp-route-id="@p.ProductId">Edit</a>
                                         <a class="btn btn-danger btn-action" asp-controller="Product" asp-action="deleteProduct" asp-route-id="@p.ProductId">Delete</a>
